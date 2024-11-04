@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct CategoryModel: Codable {
+    let id : Int?
+    let name: String?
+    let image: String?
+        
+    init(id: Int?, name: String?, image: String?) {
+        self.id = id
+        self.name = name
+        self.image = image
+    }
+}

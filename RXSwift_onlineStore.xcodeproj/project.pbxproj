@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		371CAEB12CD885A900B8FF3E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEB02CD885A900B8FF3E /* IQKeyboardManagerSwift */; };
+		371CAEB42CD885ED00B8FF3E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEB32CD885ED00B8FF3E /* RxCocoa */; };
+		371CAEB62CD885ED00B8FF3E /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEB52CD885ED00B8FF3E /* RxRelay */; };
+		371CAEB82CD885ED00B8FF3E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEB72CD885ED00B8FF3E /* RxSwift */; };
+		371CAEBB2CD8860B00B8FF3E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEBA2CD8860B00B8FF3E /* SDWebImage */; };
+		371CAEBD2CD8860B00B8FF3E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 371CAEBC2CD8860B00B8FF3E /* SDWebImageMapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		37403C0F2CD488DA0012D999 /* RXSwift_onlineStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RXSwift_onlineStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				371CAEB62CD885ED00B8FF3E /* RxRelay in Frameworks */,
+				371CAEB42CD885ED00B8FF3E /* RxCocoa in Frameworks */,
+				371CAEB82CD885ED00B8FF3E /* RxSwift in Frameworks */,
+				371CAEB12CD885A900B8FF3E /* IQKeyboardManagerSwift in Frameworks */,
+				371CAEBD2CD8860B00B8FF3E /* SDWebImageMapKit in Frameworks */,
+				371CAEBB2CD8860B00B8FF3E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = RXSwift_onlineStore;
 			packageProductDependencies = (
+				371CAEB02CD885A900B8FF3E /* IQKeyboardManagerSwift */,
+				371CAEB32CD885ED00B8FF3E /* RxCocoa */,
+				371CAEB52CD885ED00B8FF3E /* RxRelay */,
+				371CAEB72CD885ED00B8FF3E /* RxSwift */,
+				371CAEBA2CD8860B00B8FF3E /* SDWebImage */,
+				371CAEBC2CD8860B00B8FF3E /* SDWebImageMapKit */,
 			);
 			productName = RXSwift_onlineStore;
 			productReference = 37403C0F2CD488DA0012D999 /* RXSwift_onlineStore.app */;
@@ -107,6 +128,11 @@
 			);
 			mainGroup = 37403C062CD488DA0012D999;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				371CAEAF2CD885A900B8FF3E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				371CAEB22CD885ED00B8FF3E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				371CAEB92CD8860B00B8FF3E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 37403C102CD488DA0012D999 /* Products */;
 			projectDirPath = "";
@@ -145,6 +171,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XF2FFA2525;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RXSwift_onlineStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -172,6 +199,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XF2FFA2525;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RXSwift_onlineStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -333,6 +361,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		371CAEAF2CD885A900B8FF3E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
+		371CAEB22CD885ED00B8FF3E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
+		371CAEB92CD8860B00B8FF3E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		371CAEB02CD885A900B8FF3E /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEAF2CD885A900B8FF3E /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		371CAEB32CD885ED00B8FF3E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEB22CD885ED00B8FF3E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		371CAEB52CD885ED00B8FF3E /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEB22CD885ED00B8FF3E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		371CAEB72CD885ED00B8FF3E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEB22CD885ED00B8FF3E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		371CAEBA2CD8860B00B8FF3E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEB92CD8860B00B8FF3E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		371CAEBC2CD8860B00B8FF3E /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 371CAEB92CD8860B00B8FF3E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 37403C072CD488DA0012D999 /* Project object */;
 }

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVM" customModule="RXSwift_onlineStore" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="RXSwift_onlineStore" customModuleProvider="target">
             <connections>
+                <outlet property="bagICon" destination="dUf-UD-6qO" id="8Kd-Um-ZGp"/>
                 <outlet property="categoriesCollectionView" destination="TZV-PF-sxO" id="LAx-OS-A8I"/>
                 <outlet property="newInCollectionView" destination="pjj-fI-Jv9" id="1eq-6B-1g0"/>
+                <outlet property="profilePictureButton" destination="czp-KI-Zj8" id="UiZ-xM-IMl"/>
                 <outlet property="topSellingCollectionView" destination="83A-uJ-SD1" id="a9B-ZU-txK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,14 +24,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czp-KI-Zj8">
-                    <rect key="frame" x="16" y="75" width="75" height="35"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUf-UD-6qO">
-                    <rect key="frame" x="337" y="75" width="40" height="40"/>
+                    <rect key="frame" x="16" y="75" width="30" height="30"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="BagIcon"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUf-UD-6qO">
+                    <rect key="frame" x="337" y="75" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="63J-Z1-dzm"/>
+                        <constraint firstAttribute="height" constant="40" id="UlQ-9V-qHJ"/>
+                    </constraints>
+                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="TestImageLarge.png">
+                        <attributedString key="attributedTitle">
+                            <fragment content="test">
+                                <attributes>
+                                    <color key="NSColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <font key="NSFont" metaFont="system" size="15"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <buttonConfiguration key="configuration" style="filled" image="BagIcon">
+                        <attributedString key="attributedTitle"/>
+                    </buttonConfiguration>
                 </button>
                 <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="WNr-AL-hKa">
                     <rect key="frame" x="16" y="131" width="361" height="56"/>
@@ -42,7 +60,7 @@
                     <rect key="frame" x="0.0" y="195" width="393" height="623"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoC-Ko-F42">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="886"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="926"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1E-i6-KXw">
                                     <rect key="frame" x="16" y="16" width="78.333333333333329" height="18"/>
@@ -58,54 +76,54 @@
                                         <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                     </buttonConfiguration>
                                 </button>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TZV-PF-sxO">
-                                    <rect key="frame" x="0.0" y="50" width="393" height="90"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TZV-PF-sxO">
+                                    <rect key="frame" x="0.0" y="50" width="393" height="130"/>
+                                    <color key="backgroundColor" red="0.1137254902" green="0.094117647060000004" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="90" id="Na7-WW-lqf"/>
+                                        <constraint firstAttribute="height" constant="130" id="Na7-WW-lqf"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cFV-8d-aIS">
-                                        <size key="itemSize" width="56" height="80"/>
+                                        <size key="itemSize" width="100" height="130"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Selling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jy-Bg-Mnd">
-                                    <rect key="frame" x="16" y="156" width="78.333333333333329" height="31"/>
+                                    <rect key="frame" x="16" y="196" width="78.333333333333329" height="31"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9e-gc-jBe">
-                                    <rect key="frame" x="308.66666666666669" y="156" width="68.333333333333314" height="31"/>
+                                    <rect key="frame" x="308.66666666666669" y="196" width="68.333333333333314" height="31"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="See All">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                     </buttonConfiguration>
                                 </button>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="83A-uJ-SD1">
-                                    <rect key="frame" x="0.0" y="203" width="393" height="300"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="83A-uJ-SD1">
+                                    <rect key="frame" x="0.0" y="243" width="393" height="300"/>
+                                    <color key="backgroundColor" red="0.1137254902" green="0.094117647060000004" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="300" id="c5M-2a-MxA"/>
                                     </constraints>
-                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="im5-KA-H9t">
-                                        <size key="itemSize" width="128" height="128"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="16" id="im5-KA-H9t">
+                                        <size key="itemSize" width="160" height="290"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyc-Ff-NN4">
-                                    <rect key="frame" x="16" y="519" width="49" height="31"/>
+                                    <rect key="frame" x="16" y="559" width="49" height="31"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjX-SZ-8gA">
-                                    <rect key="frame" x="308.66666666666669" y="519" width="68.333333333333314" height="31"/>
+                                    <rect key="frame" x="308.66666666666669" y="559" width="68.333333333333314" height="31"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="See All">
@@ -113,7 +131,7 @@
                                     </buttonConfiguration>
                                 </button>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-fI-Jv9">
-                                    <rect key="frame" x="0.0" y="566" width="393" height="300"/>
+                                    <rect key="frame" x="0.0" y="606" width="393" height="300"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="300" id="4EJ-A1-vGm"/>
@@ -184,6 +202,7 @@
     </objects>
     <resources>
         <image name="BagIcon" width="40" height="40"/>
+        <image name="TestImageLarge.png" width="1275" height="720"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

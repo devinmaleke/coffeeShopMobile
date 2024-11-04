@@ -14,6 +14,7 @@ class HomeVM {
     
     // Observable untuk menyimpan data pengguna
     var categories: BehaviorRelay<[CategoryModel]> = BehaviorRelay(value: [])
+    var products: BehaviorRelay<[ProductModel]> = BehaviorRelay(value: [])
     
     func fetchCategories() {
         let url = URL(string: "https://api.escuelajs.co/api/v1/categories")!
@@ -26,6 +27,17 @@ class HomeVM {
             .bind(to: categories)
             .disposed(by: disposeBag)
     }
+    
+    func fetchProducts() {
+        let url = URL(string: "https://api.escuelajs.co/api/v1/products")!
+        
+        URLSession.shared.rx.data(request: URLRequest(url: url))
+            .map { data -> [ProductModel] in
+                let productResponse = try JSONDecoder().decode([ProductModel].self, from: data)
+                return productResponse
+            }
+            .bind(to: products)
+            .disposed(by: disposeBag)
+    }
 }
-
 

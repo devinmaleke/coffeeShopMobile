@@ -10,13 +10,15 @@ import RxSwift
 import RxCocoa
 
 class HomeVC: UIViewController {
-
+    
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     @IBOutlet weak var topSellingCollectionView: UICollectionView!
     @IBOutlet weak var newInCollectionView: UICollectionView!
+    @IBOutlet weak var profilePictureButton: UIButton!
+    @IBOutlet weak var bagICon: UIButton!
     
-    private let viewModel = CategoryVM()
+    private let viewModel = HomeVM()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -24,75 +26,50 @@ class HomeVC: UIViewController {
         
         setupCollectionView()
         viewModel.fetchCategories()
+        viewModel.fetchProducts()
+        setupBindings()
+        setupUI()
         
-            
-       
     }
-
+    
+    
+    private func setupUI(){
+        
+        profilePictureButton.layer.cornerRadius = profilePictureButton.frame.size.width / 2
+        profilePictureButton.clipsToBounds = true
+        profilePictureButton.setImage(UIImage.init(systemName: "person.circle.fill"), for: .normal)
+        
+        bagICon.layer.cornerRadius = bagICon.frame.size.width / 2
+        bagICon.clipsToBounds = true
+        bagICon.setImage(UIImage(named: "BagIcon"), for: .normal)
+    }
     
     private func setupCollectionView() {
-        categoriesCollectionView.delegate = self
-        categoriesCollectionView.dataSource = self
-        let categoryCell = UINib(nibName: "PickerCVC", bundle: nil)
+        let categoryCell = UINib(nibName: "CategoryCVC", bundle: nil)
         categoriesCollectionView.register(categoryCell, forCellWithReuseIdentifier: "CategoryCVC")
+        
+        let topSellingCell = UINib(nibName: "CardCVC", bundle: nil)
+        topSellingCollectionView.register(topSellingCell, forCellWithReuseIdentifier: "CardCVC")
+    }
+    
+    private func setupBindings() {
+        viewModel.categories
+            .bind(to: categoriesCollectionView.rx.items(cellIdentifier: "CategoryCVC", cellType: CategoryCVC.self)) { index, category, cell in
+                // Configure your cell
+                cell.setup(with: category.image, title: category.name ?? "")
+                
+            }
+            .disposed(by: disposeBag)
+        
+        
+        viewModel.products
+            .bind(to: topSellingCollectionView.rx.items(cellIdentifier: "CardCVC", cellType: CardCVC.self)) { index, product, cell in
+                // Configure your cell
+                cell.setup(with: product.images?[0], title: product.title ?? "TEST", price: product.price ?? 0)
+                
+            }
+            .disposed(by: disposeBag)
+        
     }
 }
 
-extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == pickerCollectionView{
-            return filterSelection.count
-        }else{
-            return 20
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == pickerCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PickerCVC", for: indexPath) as! PickerCVC
-            cell.setup(title: filterSelection[indexPath.row])
-            cell.setSelected(indexPath.row == filterIndex)
-            return cell
-        } else {
-            let cardCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCVC", for: indexPath) as! CardCVC
-            return cardCell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filterIndex = indexPath.row
-        
-        collectionView.reloadData()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            // Ambil lebar koleksi
-        if collectionView == cardCollectionView{
-            let totalWidth = collectionView.frame.width
-            let padding: CGFloat = 16 // atau nilai padding yang Anda inginkan
-            let availableWidth = totalWidth - padding * 3 // Kurangi padding untuk kolom dan ruang antar sel
-            
-            // Hitung lebar setiap sel (dibagi dua)
-            let width = availableWidth / 2
-            
-            // Tentukan tinggi yang diinginkan
-            let height: CGFloat = 240 // Ganti dengan tinggi yang Anda inginkan
-            
-            return CGSize(width: width, height: height)
-        }else{
-            return CGSize(width: 128, height: 29)
-        }
-            
-        }
-        
-        // Mengatur jarak antar item
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 16 // Jarak antara baris
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 16 // Jarak antar kolom
-        }
-    
-}
